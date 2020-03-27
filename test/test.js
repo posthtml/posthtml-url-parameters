@@ -35,14 +35,14 @@ test('Skip if invalid URL', t => {
 
 test('Does not encode parameters if `encode` option is false', t => {
   return process(t, 'no-encode', {
-    options: {encode: false},
+    qs: {encode: false},
     parameters: {foo: '@Bar@'}
   })
 })
 
 test('Does not sort parameters if `sort` option is false', t => {
   return process(t, 'no-sort', {
-    options: {sort: false},
+    qs: {sort: false},
     parameters: {foo: 'bar', baz: 'qux'}
   })
 })

@@ -25,11 +25,9 @@ $ npm i posthtml posthtml-url-parameters
 const posthtml = require('posthtml')
 const urlParams = require('posthtml-url-parameters')
 
-const parameters = {foo: 'bar', baz: 'qux'}
-
 posthtml([
     urlParams({
-      parameters: parameters
+      parameters: { foo: 'bar', baz: 'qux' }
     })
   ])
   .process('<a href="https://example.com">Test</div>')
@@ -72,7 +70,7 @@ require('posthtml-url-parameters')({
 })
 ```
 
-### `options`
+### `qs`
 
 Default: `undefined`
 
@@ -84,12 +82,10 @@ For example, you can disable encoding:
 const posthtml = require('posthtml')
 const urlParams = require('posthtml-url-parameters')
 
-const parameters = {foo: '@Bar@'}
-
 posthtml([
     urlParams({
-      parameters: parameters,
-      options: {
+      parameters: { foo: '@Bar@' },
+      qs: {
         encode: false
       }
     })
