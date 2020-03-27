@@ -1,0 +1,35 @@
+{
+  "name": "posthtml-url-parameters",
+  "description": "PostHTML plugin for adding parameters to URLs.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Cosmin Popovici (https://github.com/cossssmin)",
+  "bugs": "https://github.com/cossssmin/posthtml-url-parameters/issues",
+  "homepage": "https://github.com/cossssmin/posthtml-url-parameters",
+  "repository": "cossssmin/posthtml-url-parameters",
+  "main": "lib",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "test": "nyc ava",
+    "pretest": "xo",
+    "release": "np"
+  },
+  "keywords": [
+    "html",
+    "posthtml",
+    "posthtml-plugin"
+  ],
+  "dependencies": {
+    "is-url-superb": "^3.0.0",
+    "posthtml": "^0.12.0",
+    "query-string": "^6.11.1"
+  },
+  "devDependencies": {
+    "ava": "^3.5.0",
+    "np": "^6.2.0",
+    "nyc": "^15.0.0",
+    "xo": "^0.28.0"
+  }
+}
