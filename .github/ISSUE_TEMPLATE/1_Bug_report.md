@@ -10,6 +10,6 @@ _Describe your problem._
 
 ## Environment
 
-- `posthtml-myplugin` plugin version: #.#.#
+- `posthtml-url-parameters` plugin version: #.#.#
 - PostHTML version: #.#.#
 - Node.js version: #.#.#
