@@ -100,7 +100,7 @@ posthtml([
 [npm-version-shield]: https://img.shields.io/npm/v/posthtml-url-parameters.svg
 [npm-stats]: http://npm-stat.com/charts.html?package=posthtml-url-parameters
 [npm-stats-shield]: https://img.shields.io/npm/dt/posthtml-url-parameters.svg
-[travis-ci]: https://travis-ci.org/cossssmin/posthtml-url-parameters/
-[travis-ci-shield]: https://img.shields.io/travis/cossssmin/posthtml-url-parameters/master.svg
+[travis-ci]: https://travis-ci.org/posthtml/posthtml-url-parameters/
+[travis-ci-shield]: https://img.shields.io/travis/posthtml/posthtml-url-parameters/master.svg
 [license]: ./LICENSE
 [license-shield]: https://img.shields.io/npm/l/posthtml-url-parameters.svg

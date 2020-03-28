@@ -4,9 +4,9 @@
   "version": "1.0.1",
   "license": "MIT",
   "author": "Cosmin Popovici (https://github.com/cossssmin)",
-  "bugs": "https://github.com/cossssmin/posthtml-url-parameters/issues",
-  "homepage": "https://github.com/cossssmin/posthtml-url-parameters",
-  "repository": "cossssmin/posthtml-url-parameters",
+  "bugs": "https://github.com/posthtml/posthtml-url-parameters/issues",
+  "homepage": "https://github.com/posthtml/posthtml-url-parameters",
+  "repository": "posthtml/posthtml-url-parameters",
   "main": "lib",
   "engines": {
     "node": ">=10"
