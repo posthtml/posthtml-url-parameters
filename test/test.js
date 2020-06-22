@@ -33,6 +33,10 @@ test('Skip if invalid URL', t => {
   })
 })
 
+test('Does not skip variable URL', t => {
+  return process(t, 'variable-url')
+})
+
 test('Does not encode parameters if `encode` option is false', t => {
   return process(t, 'no-encode', {
     qs: {encode: false},
