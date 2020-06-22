@@ -22,14 +22,14 @@
     "posthtml-plugin"
   ],
   "dependencies": {
-    "is-url-superb": "^3.0.0",
-    "posthtml": "^0.12.0",
-    "query-string": "^6.11.1"
+    "posthtml": "^0.13.1",
+    "query-string": "^6.13.1",
+    "url-regex": "^5.0.0"
   },
   "devDependencies": {
-    "ava": "^3.5.0",
-    "np": "^6.2.0",
-    "nyc": "^15.0.0",
-    "xo": "^0.28.0"
+    "ava": "^3.9.0",
+    "np": "^6.2.4",
+    "nyc": "^15.1.0",
+    "xo": "^0.32.0"
   }
 }
