@@ -22,9 +22,9 @@
     "posthtml-plugin"
   ],
   "dependencies": {
+    "is-url-superb": "^4.0.0",
     "posthtml": "^0.13.1",
-    "query-string": "^6.13.1",
-    "url-regex": "^5.0.0"
+    "query-string": "^6.13.1"
   },
   "devDependencies": {
     "ava": "^3.9.0",
