@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "is-url-superb": "^4.0.0",
-    "posthtml": "^0.13.1",
+    "posthtml": "^0.15.0",
     "query-string": "^6.13.1"
   },
   "devDependencies": {
