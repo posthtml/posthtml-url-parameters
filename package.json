@@ -18,8 +18,13 @@
   },
   "keywords": [
     "html",
+    "param",
+    "parameter",
+    "posthtml-plugin",
     "posthtml",
-    "posthtml-plugin"
+    "querystring",
+    "searchparams",
+    "url-parser"
   ],
   "dependencies": {
     "is-url-superb": "^4.0.0",
