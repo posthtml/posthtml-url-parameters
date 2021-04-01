@@ -29,7 +29,7 @@
   "dependencies": {
     "is-url-superb": "^5.0.0",
     "posthtml": "^0.15.0",
-    "query-string": "^6.13.7"
+    "query-string": "^7.0.0"
   },
   "devDependencies": {
     "ava": "^3.13.0",
