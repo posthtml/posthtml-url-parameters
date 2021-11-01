@@ -27,7 +27,7 @@
     "url-parser"
   ],
   "dependencies": {
-    "is-url-superb": "^5.0.0",
+    "is-url-superb": "^6.1.0",
     "posthtml": "^0.16.4",
     "query-string": "^7.0.0"
   },
