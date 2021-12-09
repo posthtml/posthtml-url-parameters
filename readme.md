@@ -22,18 +22,22 @@ $ npm i posthtml posthtml-url-parameters
 ## Usage
 
 ```js
-const posthtml = require('posthtml')
-const urlParams = require('posthtml-url-parameters')
+import posthtml from 'posthtml'
+import urlParams from 'posthtml-url-parameters'
 
 posthtml([
-    urlParams({
-      parameters: { foo: 'bar', baz: 'qux' }
-    })
-  ])
+  urlParams({
+    parameters: { foo: 'bar', baz: 'qux' }
+  })
+])
   .process('<a href="https://example.com">Test</div>')
   .then(result => console.log(result.html)))
+```
 
-  // <a href="https://example.com?baz=qux&foo=bar">Test</div>
+Result:
+
+```html
+<a href="https://example.com?baz=qux&foo=bar">Test</div>
 ```
 
 ## Configuration
@@ -47,12 +51,14 @@ Object containing parameter name (key) and its value.
 Example:
 
 ```js
-require('posthtml-url-parameters')({
-  parameters: {
-    utm_source: 'Campaign',
-    '1stDraft': true
-  }
-})
+posthtml([
+  urlParams({
+    parameters: { 
+      utm_source: 'Campaign',
+      '1stDraft': true      
+     }
+  })
+])
 ```
 
 ### `tags`
@@ -64,10 +70,11 @@ Array of tag names to process. Only URLs inside `href=""` attributes of tags in 
 Example:
 
 ```js
-require('posthtml-url-parameters')({
-  tags: ['a', 'link'],
-  // ...
-})
+posthtml([
+  urlParams({
+    tags: ['a', 'link'],
+  })
+])
 ```
 
 ### `qs`
@@ -79,21 +86,25 @@ Options to pass to `query-string` - see available options [here](https://github.
 For example, you can disable encoding:
 
 ```js
-const posthtml = require('posthtml')
-const urlParams = require('posthtml-url-parameters')
+import posthtml from 'posthtml'
+import urlParams from 'posthtml-url-parameters'
 
 posthtml([
-    urlParams({
-      parameters: { foo: '@Bar@' },
-      qs: {
-        encode: false
-      }
-    })
-  ])
+  urlParams({
+    parameters: { foo: '@Bar@' },
+    qs: {
+      encode: false
+    }
+  })
+])
   .process('<a href="https://example.com">Test</div>')
   .then(result => console.log(result.html)))
+```
 
-  // <a href="https://example.com?foo=@Bar@">Test</div>
+Result:
+
+```html
+<a href="https://example.com?foo=@Bar@">Test</div>
 ```
 
 [npm]: https://www.npmjs.com/package/posthtml-url-parameters
