@@ -59,7 +59,9 @@ require('posthtml-url-parameters')({
 
 Default: `[a]`
 
-Array of tag names to process. Only URLs inside `href=""` attributes of tags in this array will be processed.
+Array of tag names to process. 
+
+By default, only URLs inside `href=""` attributes of tags in this array will be processed.
 
 Example:
 
@@ -70,13 +72,48 @@ require('posthtml-url-parameters')({
 })
 ```
 
+You may use some CSS selectors when specifying tags:
+
+```js
+require('posthtml-url-parameters')({
+  tags: ['a.button', 'a[href*="example.com"]' 'link'],
+  // ...
+})
+```
+
+All [`posthtml-match-helper` selectors](https://github.com/posthtml/posthtml-match-helper) are supported.
+
+### `strict`
+
+Default: `false`
+
+By default, the plugin will append query parameters only to valid URLs.
+
+You may disable `strict` mode to append parameters to any string:
+
+```js
+const posthtml = require('posthtml')
+const urlParams = require('posthtml-url-parameters')
+
+posthtml([
+    urlParams({
+      parameters: { foo: 'bar' },
+      strict: false,
+    })
+  ])
+  .process('<a href="https://example.com/campaigns/{{ id }}">Details</div>')
+  .then(result => console.log(result.html)))
+
+  // <a href="https://example.com/campaigns/{{ id }}?foo=bar">Details</div>
+```
+
 ### `qs`
 
 Default: `undefined`
 
 Options to pass to `query-string` - see available options [here](https://github.com/sindresorhus/query-string#stringifyobject-options).
 
-For example, you can disable encoding:
+For example, you may disable encoding:
 
 ```js
 const posthtml = require('posthtml')
