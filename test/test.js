@@ -61,7 +61,7 @@ test('Appends new parameters to existing parameters', t => {
 
 test('Processes only tags provided in the `tags` option', t => {
   return process(t, 'tags', {
-    tags: ['a', 'link'],
+    tags: ['a[href*="example.com"]', 'link'],
     parameters: {foo: 'bar'}
   })
 })
