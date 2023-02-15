@@ -4,8 +4,8 @@
   <p>Add parameters to URLs</p>
 
   [![Version][npm-version-shield]][npm]
-  [![License][license-shield]][license]
   [![Build][github-ci-shield]][github-ci]
+  [![License][license-shield]][license]
   [![Downloads][npm-stats-shield]][npm-stats]
 </div>
 
@@ -138,6 +138,6 @@ posthtml([
 [npm-stats]: http://npm-stat.com/charts.html?package=posthtml-url-parameters
 [npm-stats-shield]: https://img.shields.io/npm/dt/posthtml-url-parameters.svg
 [github-ci]: https://github.com/posthtml/posthtml-url-parameters/actions
-[github-ci-shield]: https://img.shields.io/github/workflow/status/posthtml/posthtml-url-parameters/Node.js%20CI
+[github-ci-shield]: https://github.com/posthtml/posthtml-url-parameters/actions/workflows/nodejs.yml/badge.svg
 [license]: ./license
 [license-shield]: https://img.shields.io/npm/l/posthtml-url-parameters.svg
