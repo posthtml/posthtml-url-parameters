@@ -9,7 +9,7 @@
   "repository": "posthtml/posthtml-url-parameters",
   "main": "lib",
   "engines": {
-    "node": ">=10"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "test": "c8 ava",
