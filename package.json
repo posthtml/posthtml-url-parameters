@@ -18,7 +18,8 @@
   "scripts": {
     "dev": "vitest",
     "test": "vitest run --coverage",
-    "pretest": "xo",
+    "lint": "eslint lib/*.{js,ts}",
+    "pretest": "npm run lint",
     "release": "np"
   },
   "keywords": [
@@ -38,9 +39,10 @@
     "query-string": "^9.0.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@vitest/coverage-v8": "^1.3.1",
+    "eslint": "^8.57.0",
     "np": "^10.0.0",
-    "vitest": "^1.3.1",
-    "xo": "^0.39.1"
+    "vitest": "^1.3.1"
   }
 }
