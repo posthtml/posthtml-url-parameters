@@ -66,7 +66,7 @@ posthtml([
 ### `tags`
 
 Type: `Array`\
-Default: `[a]`
+Default: `['a']`
 
 Array of tag names to process. 
 
