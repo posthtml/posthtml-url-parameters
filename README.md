@@ -11,7 +11,7 @@
 
 ## About
 
-This is a PostHTML plugin that allows you to add parameters to URLs.
+This is a PostHTML plugin that allows you to add query string parameters to URLs.
 
 ## Install
 
@@ -22,18 +22,18 @@ npm i posthtml posthtml-url-parameters
 ## Usage
 
 ```js
-const posthtml = require('posthtml')
-const urlParams = require('posthtml-url-parameters')
+import posthtml from 'posthtml'
+import urlParams from 'posthtml-url-parameters'
 
 posthtml([
-    urlParams({
-      parameters: { foo: 'bar', baz: 'qux' }
-    })
-  ])
+  urlParams({
+    parameters: { foo: 'bar', baz: 'qux' }
+  })
+])
   .process('<a href="https://example.com">Test</div>')
   .then(result => console.log(result.html)))
 
-  // <a href="https://example.com?baz=qux&foo=bar">Test</div>
+// <a href="https://example.com?baz=qux&foo=bar">Test</div>
 ```
 
 ## Configuration
@@ -47,12 +47,19 @@ Object containing parameter name (key) and its value.
 Example:
 
 ```js
-require('posthtml-url-parameters')({
-  parameters: {
-    utm_source: 'Campaign',
-    '1stDraft': true
-  }
-})
+import posthtml from 'posthtml'
+import urlParams from 'posthtml-url-parameters'
+
+posthtml([
+  urlParams({
+    parameters: {
+      utm_source: 'Campaign',
+      '1stDraft': true
+    }
+  })
+])
+  .process('<a href="https://example.com">Test</a>')
+  .then(result => console.log(result.html))
 ```
 
 ### `tags`
@@ -66,19 +73,30 @@ By default, only URLs inside [known attributes](#attributes) of tags in this arr
 Example:
 
 ```js
-require('posthtml-url-parameters')({
-  tags: ['a', 'link'],
-  // ...
-})
+import posthtml from 'posthtml'
+import urlParams from 'posthtml-url-parameters'
+
+posthtml([
+  urlParams({
+    tags: ['a', 'img']
+  })
+])
+  .process(`
+    <a href="https://example.com">Test</a>
+    <img src="https://example.com/image.jpg">
+  `)
+  .then(result => console.log(result.html))
 ```
 
 You may use some CSS selectors when specifying tags:
 
 ```js
-require('posthtml-url-parameters')({
-  tags: ['a.button', 'a[href*="example.com"]' 'link'],
-  // ...
-})
+posthtml([
+  urlParams({
+    tags: ['a.button', 'a[href*="example.com"]' 'link'],
+  })
+])
+  .process(/*...*/)
 ```
 
 All [`posthtml-match-helper` selectors](https://github.com/posthtml/posthtml-match-helper) are supported.
@@ -114,8 +132,8 @@ By default, the plugin will append query parameters only to valid URLs.
 You may disable `strict` mode to append parameters to any string:
 
 ```js
-const posthtml = require('posthtml')
-const urlParams = require('posthtml-url-parameters')
+import posthtml from 'posthtml'
+import urlParams from 'posthtml-url-parameters'
 
 posthtml([
   urlParams({
@@ -138,8 +156,8 @@ Options to pass to `query-string` - see available options [here](https://github.
 For example, you may disable encoding:
 
 ```js
-const posthtml = require('posthtml')
-const urlParams = require('posthtml-url-parameters')
+import posthtml from 'posthtml'
+import urlParams from 'posthtml-url-parameters'
 
 posthtml([
   urlParams({
@@ -152,7 +170,7 @@ posthtml([
   .process('<a href="https://example.com">Test</a>')
   .then(result => console.log(result.html)))
 
-  // <a href="https://example.com?foo=@Bar@">Test</a>
+// <a href="https://example.com?foo=@Bar@">Test</a>
 ```
 
 [npm]: https://www.npmjs.com/package/posthtml-url-parameters
@@ -161,5 +179,5 @@ posthtml([
 [npm-stats-shield]: https://img.shields.io/npm/dt/posthtml-url-parameters.svg
 [github-ci]: https://github.com/posthtml/posthtml-url-parameters/actions
 [github-ci-shield]: https://github.com/posthtml/posthtml-url-parameters/actions/workflows/nodejs.yml/badge.svg
-[license]: ./license
+[license]: ./LICENSE
 [license-shield]: https://img.shields.io/npm/l/posthtml-url-parameters.svg
