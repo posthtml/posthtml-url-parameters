@@ -93,3 +93,41 @@ test('Processes only tags provided in the `tags` option', async t => {
     <link rel="stylesheet" href="https://example.com/style.css?foo=bar">
     <module href="https://example.com/header.html"></module>`)
 })
+
+test('Adds parameters to known attribute values', async t => {
+  const html = await process(`
+    <img src="https://example.com/image.jpg">
+    <video poster="https://example.com/poster.jpg"></video>
+    <table><td background="https://example.com/image.jpg"></td></table>
+  `, {
+    parameters: {foo: 'bar', baz: 'qux'},
+    tags: ['img[src]', 'video[poster]', 'td[background]']
+  })
+
+  t.is(html, `<img src="https://example.com/image.jpg?baz=qux&foo=bar">
+    <video poster="https://example.com/poster.jpg?baz=qux&foo=bar"></video>
+    <table><td background="https://example.com/image.jpg?baz=qux&foo=bar"></td></table>`)
+})
+
+test('Adds parameters to specified attribute values only', async t => {
+  const html = await process(`
+    <a href="foo.html" data-href="https://example.com">Test</a>
+    <img src="image.jpg">
+  `, {
+    parameters: {foo: 'bar'},
+    tags: ['a', 'img'],
+    attributes: ['data-href']
+  })
+
+  t.is(html, `<a href="foo.html" data-href="https://example.com?foo=bar">Test</a>
+    <img src="image.jpg">`)
+})
+
+test('Skip if node has no attributes', async t => {
+  const html = await process('<a>Test</a>', {
+    parameters: {foo: 'bar'},
+    tags: ['a']
+  })
+
+  t.is(html, '<a>Test</a>')
+})

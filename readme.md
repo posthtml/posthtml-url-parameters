@@ -16,7 +16,7 @@ This is a PostHTML plugin that allows you to add parameters to URLs.
 ## Install
 
 ```
-$ npm i posthtml posthtml-url-parameters
+npm i posthtml posthtml-url-parameters
 ```
 
 ## Usage
@@ -61,7 +61,7 @@ Default: `[a]`
 
 Array of tag names to process. 
 
-By default, only URLs inside `href=""` attributes of tags in this array will be processed.
+By default, only URLs inside [known attributes](#attributes) of tags in this array will be processed.
 
 Example:
 
@@ -83,6 +83,28 @@ require('posthtml-url-parameters')({
 
 All [`posthtml-match-helper` selectors](https://github.com/posthtml/posthtml-match-helper) are supported.
 
+### attributes
+
+Type: `Array`\
+Default: `['src', 'href', 'poster', 'srcset', 'background']`
+
+Array of attributes to process for the given tags.
+
+You may override this with your own list of attributes - the plugin will only process URLs in _these_ attributes.
+
+```js
+posthtml([
+  urlParams({
+    parameters: {foo: 'bar'},
+    attributes: ['data-href']
+  })
+])
+  .process('<a href="foo.html" data-href="https://example.com">Test</a>')
+  .then(result => console.log(result.html)))
+
+// <a href="foo.html" data-href="https://example.com?foo=bar">Test</a>
+```
+
 ### `strict`
 
 Default: `false`
@@ -96,15 +118,15 @@ const posthtml = require('posthtml')
 const urlParams = require('posthtml-url-parameters')
 
 posthtml([
-    urlParams({
-      parameters: { foo: 'bar' },
-      strict: false,
-    })
-  ])
-  .process('<a href="https://example.com/campaigns/{{ id }}">Details</div>')
+  urlParams({
+    parameters: { foo: 'bar' },
+    strict: false,
+  })
+])
+  .process('<a href="https://example.com/campaigns/{{ id }}">Details</a>')
   .then(result => console.log(result.html)))
 
-  // <a href="https://example.com/campaigns/{{ id }}?foo=bar">Details</div>
+// <a href="https://example.com/campaigns/{{ id }}?foo=bar">Details</a>
 ```
 
 ### `qs`
@@ -120,17 +142,17 @@ const posthtml = require('posthtml')
 const urlParams = require('posthtml-url-parameters')
 
 posthtml([
-    urlParams({
-      parameters: { foo: '@Bar@' },
-      qs: {
-        encode: false
-      }
-    })
-  ])
-  .process('<a href="https://example.com">Test</div>')
+  urlParams({
+    parameters: { foo: '@Bar@' },
+    qs: {
+      encode: false
+    }
+  })
+])
+  .process('<a href="https://example.com">Test</a>')
   .then(result => console.log(result.html)))
 
-  // <a href="https://example.com?foo=@Bar@">Test</div>
+  // <a href="https://example.com?foo=@Bar@">Test</a>
 ```
 
 [npm]: https://www.npmjs.com/package/posthtml-url-parameters
