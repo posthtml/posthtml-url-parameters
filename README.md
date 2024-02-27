@@ -40,6 +40,7 @@ posthtml([
 
 ### `parameters`
 
+Type: `Object`\
 Default: `undefined`
 
 Object containing parameter name (key) and its value.
@@ -64,6 +65,7 @@ posthtml([
 
 ### `tags`
 
+Type: `Array`\
 Default: `[a]`
 
 Array of tag names to process. 
@@ -125,6 +127,7 @@ posthtml([
 
 ### `strict`
 
+Type: `Boolean`\
 Default: `false`
 
 By default, the plugin will append query parameters only to valid URLs.
@@ -149,6 +152,7 @@ posthtml([
 
 ### `qs`
 
+Type: `Object`\
 Default: `undefined`
 
 Options to pass to `query-string` - see available options [here](https://github.com/sindresorhus/query-string#stringifyobject-options).
