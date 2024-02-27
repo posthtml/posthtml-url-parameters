@@ -24,11 +24,10 @@
   },
   "keywords": [
     "html",
-    "param",
-    "parameter",
     "posthtml-plugin",
+    "parameters",
     "posthtml",
-    "querystring",
+    "query-string",
     "searchparams",
     "url-parser"
   ],
