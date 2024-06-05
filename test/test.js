@@ -10,13 +10,13 @@ const process = (html, options, log = false) => {
     .then(result => log ? console.log(result.html) : clean(result.html))
 }
 
-test('Skip if config or parameters missing', async t => {
+test('Skip if config or parameters missing', async () => {
   const html = await process('<a href="https://example.com">Test</a>')
 
   expect(html).toEqual('<a href="https://example.com">Test</a>')
 })
 
-test('Skip if invalid URL (`strict` enabled)', async t => {
+test('Skip if invalid URL (`strict` enabled)', async () => {
   const html = await process('<a href="undefined">Test</a>', {
     parameters: {foo: 'bar'}
   })
@@ -24,7 +24,7 @@ test('Skip if invalid URL (`strict` enabled)', async t => {
   expect(html).toEqual('<a href="undefined">Test</a>')
 })
 
-test('Apply to invalid URL (`strict` disabled)', async t => {
+test('Apply to invalid URL (`strict` disabled)', async () => {
   const html = await process('<a href="undefined">Test</a>', {
     parameters: {foo: 'bar'},
     strict: false
@@ -33,7 +33,7 @@ test('Apply to invalid URL (`strict` disabled)', async t => {
   expect(html).toEqual('<a href="undefined?foo=bar">Test</a>')
 })
 
-test('Adds parameters to a[href] attribute value', async t => {
+test('Adds parameters to a[href] attribute value', async () => {
   const html = await process('<a href="https://example.com">Test</a>', {
     parameters: {foo: 'bar', baz: 'qux'}
   })
@@ -41,7 +41,7 @@ test('Adds parameters to a[href] attribute value', async t => {
   expect(html).toEqual('<a href="https://example.com?baz=qux&foo=bar">Test</a>')
 })
 
-test('URL with special characters', async t => {
+test('URL with special characters', async () => {
   const html = await process('<a href="https://example.com/{{ var }}?foo=bar">Test</a>', {
     parameters: {bar: 'baz'},
     strict: false
@@ -50,7 +50,7 @@ test('URL with special characters', async t => {
   expect(html).toEqual('<a href="https://example.com/{{ var }}?bar=baz&foo=bar">Test</a>')
 })
 
-test('Does not encode parameters if `encode` option is false', async t => {
+test('Does not encode parameters if `encode` option is false', async () => {
   const html = await process('<a href="https://example.com">Test</a>', {
     qs: {encode: false},
     parameters: {foo: '@Bar@'}
@@ -59,7 +59,7 @@ test('Does not encode parameters if `encode` option is false', async t => {
   expect(html).toEqual('<a href="https://example.com?foo=@Bar@">Test</a>')
 })
 
-test('Does not sort parameters if `sort` option is false', async t => {
+test('Does not sort parameters if `sort` option is false', async () => {
   const html = await process('<a href="https://example.com">Test</a>', {
     qs: {sort: false},
     parameters: {foo: 'bar', baz: 'qux'}
@@ -68,7 +68,7 @@ test('Does not sort parameters if `sort` option is false', async t => {
   expect(html).toEqual('<a href="https://example.com?foo=bar&baz=qux">Test</a>')
 })
 
-test('Appends new parameters to existing parameters', async t => {
+test('Appends new parameters to existing parameters', async () => {
   const html = await process('<a href="https://example.com?s=test">Test</a>', {
     parameters: {foo: 'bar', baz: 'qux'}
   })
@@ -76,7 +76,7 @@ test('Appends new parameters to existing parameters', async t => {
   expect(html).toEqual('<a href="https://example.com?baz=qux&foo=bar&s=test">Test</a>')
 })
 
-test('Processes only tags provided in the `tags` option', async t => {
+test('Processes only tags provided in the `tags` option', async () => {
   const html = await process(
     `<a href="https://example.com">Test</a>
     <a href="https://skip.me">Skip</a>
@@ -94,7 +94,7 @@ test('Processes only tags provided in the `tags` option', async t => {
     <module href="https://example.com/header.html"></module>`)
 })
 
-test('Adds parameters to known attribute values', async t => {
+test('Adds parameters to known attribute values', async () => {
   const html = await process(`
     <img src="https://example.com/image.jpg">
     <video poster="https://example.com/poster.jpg"></video>
@@ -109,7 +109,7 @@ test('Adds parameters to known attribute values', async t => {
     <table><td background="https://example.com/image.jpg?baz=qux&foo=bar"></td></table>`)
 })
 
-test('Adds parameters to specified attribute values only', async t => {
+test('Adds parameters to specified attribute values only', async () => {
   const html = await process(`
     <a href="foo.html" data-href="https://example.com">Test</a>
     <img src="image.jpg">
@@ -123,7 +123,7 @@ test('Adds parameters to specified attribute values only', async t => {
     <img src="image.jpg">`)
 })
 
-test('Skip if node has no attributes', async t => {
+test('Skip if node has no attributes', async () => {
   const html = await process('<a>Test</a>', {
     parameters: {foo: 'bar'},
     tags: ['a']
