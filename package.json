@@ -10,22 +10,27 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./lib/index.js",
-      "types": "./lib/index.d.ts"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
   },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "files": [
-    "lib"
+    "dist"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
     "dev": "vitest",
+    "build": "unbuild",
+    "prepack": "unbuild",
     "test": "vitest run --coverage",
-    "lint": "eslint lib/*.{js,ts}",
+    "lint": "biome lint ./lib",
     "pretest": "npm run lint",
-    "release": "np"
+    "release": "npx np"
   },
   "keywords": [
     "html",
@@ -43,10 +48,9 @@
     "query-string": "^9.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@biomejs/biome": "1.8.3",
     "@vitest/coverage-v8": "^2.0.1",
-    "eslint": "^8.57.0",
-    "np": "^10.0.0",
+    "unbuild": "^2.0.0",
     "vitest": "^2.0.1"
   }
 }
